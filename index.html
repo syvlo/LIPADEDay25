@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<title>LIPADE Open Day</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/ol@v10.4.0/dist/ol.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.4.0/ol.css">
+
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+    height: 100%;
+    color: #777;
+    line-height: 1.8;
+}
+
+.selected-button:hover {
+  color:white !important;
+  background-color:#616161 !important
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.label {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.logo-container {
+  padding: 10px; /* Add space between logo and text */
+}
+
+.text-container {
+  width: 59%; /* Adjust text width to fit available space */
+}
+
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+    background-image: url('images/Background1.jpg');
+    min-height: 100%;
+}
+
+/* Second image (DL) */
+.bgimg-2 {
+    background-image: url("images/Background1.jpg");
+    min-height: 200px;
+}
+
+/* Third image (Contact) */
+.bgimg-3 {
+    background-image: url("images/Background1.jpg");
+    min-height: 200px;
+}
+
+ul li
+{
+    list-style-type: none;
+    text-align: left;
+    margin:10px 0;
+    padding:10px 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 85%;
+    color: white;
+}
+
+th {
+    border-bottom: 1px solid #ddd;
+}
+
+tr th
+{
+  font-size: 85%;
+}
+tr.keynote th
+{
+  background-color: #988661;
+  font-size: 85%;
+}
+
+tr.keynote th ul li
+{
+  font-size: 85%;
+}
+
+tr.break th
+{
+  background-color: #de9e44;
+  font-size: 85%;
+}
+
+tr.open th
+{
+  background-color: #7c7362;
+  font-size: 85%;
+}
+
+tr.session th ul li
+{
+  font-size: 85%;
+}
+
+tr.session th
+{
+  background-color: #4c5157;
+  font-size: 85%;
+}
+
+tr.poster th
+{
+  background-color:#0d0c06;
+  font-size: 85%;
+}
+
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1600px) {
+    .bgimg-1, .bgimg-2, .bgimg-3 {
+        background-attachment: scroll;
+        min-height: 400px;
+    }
+}
+</style>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <a href="#home" class="w3-bar-item w3-button"><i class="fa fa-home"></i> HOME</a>
+    <a href="#presentation" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-space-shuttle"></i> PRESENTATION</a>
+    <a href="#program" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-calendar"></i> PROGRAM</a>
+    <a href="#attend" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-hand-pointer"></i> HOW TO ATTEND</a>
+    <a href="#organizers" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-users"></i> ORGANIZERS</a>
+    <!--<a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
+      <i class="fa fa-search"></i>
+    </a>-->
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+    <a href="#presentation" class="w3-bar-item w3-button" onclick="toggleFunction()">PRESENTATION</a>
+    <a href="#program" class="w3-bar-item w3-button" onclick="toggleFunction()">PROGRAM</a>
+    <a href="#attend" class="w3-bar-item w3-button" onclick="toggleFunction()">HOW TO ATTEND</a>
+    <a href="#organizers" class="w3-bar-item w3-button" onclick="toggleFunction()">ORGANIZERS</a>
+    <!--<a href="#" class="w3-bar-item w3-button">SEARCH</a>-->
+  </div>
+</div>
+
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 w3-display-container" id="home">
+  <div class="w3-display-middle">
+     <span class="w3-xxlarge w3-text-white w3-wide">10th LIPADE Open Day<br></span>
+     <span class="w3-xlarge w3-text-white w3-wide">June 19, 2025</span>
+  </div>
+</div>
+
+
+<!-- Container (Portfolio Section) -->
+<div class="w3-content w3-container w3-padding-64" id="presentation">
+  <h3 class="w3-center">PRESENTATION</h3>
+  
+  <p class="w3-left-align">The computer science department of Université Paris Cité, Laboratory of Informatics Paris Descartes (LIPADE), belongs to the Faculty of Mathematics and Computer Science. With its more than 60 members, LIPADE forms a vibrant and international research environment. It is carrying out theoretical and applied research in the areas of intelligent agents and multi-agent systems, machine learning, computer vision and image processing, networks, databases and data analytics. Its members are actively participating in European and French research projects, as well as in collaborations with the industry.<br>
+  The LIPADE Open Day is an annual event, which aims to open the doors of the department to external visitors, showcase the research work being carried out by the students and professors of the department, host invited researchers, and foster a fruitful discussion and exchange of ideas on the current challenges in computer science.</p>
+</div>
+
+
+<div class="bgimg-3 w3-display-container">
+  <div class="w3-display-middle">
+     <span class="w3-xxlarge w3-text-white w3-wide">PROGRAM</span>
+  </div>
+</div>
+
+<!-- Container (Contact Section) -->
+<div class="w3-content w3-container w3-padding-64" id="program">
+  <h3 class="w3-center">Program</h3>
+    <table>
+        <tr class="open">
+         <th>9h30-9h45</th>
+         <th>Opening: Soror Sahri <i>(Co-Head of LIPADE)</i></th>
+        </tr>
+        <tr class="keynote">
+            <th>9h45-10h45<br/>
+                <b>Keynote talk</b>
+            </th>
+            <th><i>Session Chair: Thémis Palpanas (Head of LIPADE)</i><br/><br/>
+                <ul><li>Prof XXX / diNo guest
+                <br/>
+                 <p>Title</a>
+        </li></th>
+
+
+
+        </tr>   
+        <tr class="break">
+            <th>10h45-11h15</th>
+            <th>Coffee break</th>
+        </tr>
+        <tr class="session">
+            <th>11h15-12h30</th>
+            <th><i>Session: XXX</i><br/>
+                <i>Session chair: Farid Naït-Abdesselam</i>
+                <br/><br/>
+                <ul>
+                    <li>Stefano Secci (CNAM) / SOCS Guest<br/>
+                        <p> Title </p>
+                    </li>
+                    <li>Thalya Fossey / IAD PhD student <br/>
+                        <p>Title</p>
+                    </li>
+                    <li>Ayoub Karine / SIP Maître de Conférences <br/>
+                        <p>Title</p>
+                    </li>
+                </ul>
+            </th>
+        </tr>
+        <tr class="break">
+            <th>12h30-13h30</th>
+            <th>Lunch break (buffet)</th>
+        </tr>   
+        <tr class="poster">
+            <th>13h30-14h30</th>
+            <th>Student Poster Session</th>
+        </tr>   
+        <tr class="keynote">
+            <th>14h30-15h30<br/>
+                <b>Keynote talk</b></th>
+                <th><i>Session Chair: XXX</i><br/><br/>
+                <ul><li>XXX / IAD Guest
+                <br/>
+                <p> 
+                </li></th>
+        </tr>
+        <tr class="break">
+            <th>15h30-16h00</th>
+            <th>Coffee break (buffet)</th>
+        </tr>
+        <tr class="session">
+            <th>16h-17h15</th>
+            <th><i>Session:  </i><br/>
+                <i>Session chair: XXX</i>
+                <br/><br/>
+                <ul>
+                    <li>Nizar Ouarti / SIP guest <br/>
+                        <p>Title</p> 
+                    </li>
+                    <li>Yongtao Wei / SOCS PhD Student <br/>
+                        <p>Title</p>
+                    </li>
+                    <li>XXX / diNo Internal <br/>
+                        <p>Title</p>
+                    </li>
+                </ul>
+            </th>
+        </tr>
+        <tr class="open">
+         <th>17h15</th>
+         <th>Closing: Thémis Palpanas and Soror Sahri<i>(Head and Co-Head of LIPADE)</i></th>
+        </tr>
+    </table>
+    </div>  
+</div>
+
+<!-- Third Parallax Image with Portfolio Text -->
+<div class="bgimg-3 w3-display-container">
+  <div class="w3-display-middle">
+     <span class="w3-xxlarge w3-text-white w3-wide">HOW TO ATTEND</span>
+  </div>
+</div>
+
+<!-- Container (Contact Section) -->
+<div class="w3-content w3-container w3-padding-64" id="attend">
+    <div class="container">
+        <div class="column" style="margin:20px;">
+            <h3>Event Location</h3>
+            Room Turing,<br>7th floor<br>Université Paris Cité - LIPADE<br>45 rue des Saints-Pères<br>75006 Paris
+        </div>
+        <div class="column" style="margin:20px;">
+            <h3>Public Transport</h3>
+            M4 – Saint Germain des Prés<br>
+            M10/12 – Sèvres Babylone
+        </div>
+        <div class="column" style="margin:20px;">
+            <h3>Registration</h3>
+            Please register (for free)<br> before XX June 2025
+        </div>
+    </div>
+    <div id="Map" style="height:250px"></div>
+    <script src="OpenLayers.js"></script>
+    <script>
+        var lat            = 48.855418;
+        var lon            = 2.331665;
+        var zoom           = 17;
+
+        var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+        var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+        var position       = new OpenLayers.LonLat(lon, lat).transform( fromProjection, toProjection);
+
+        map = new OpenLayers.Map("Map");
+        var mapnik         = new OpenLayers.Layer.OSM();
+        map.addLayer(mapnik);
+
+        map.setCenter(position, zoom);
+    </script>
+</div>
+
+<!-- Third Parallax Image with Portfolio Text -->
+<div class="bgimg-3 w3-display-container">
+  <div class="w3-display-middle">
+     <span class="w3-xxlarge w3-text-white w3-wide">ORGANIZERS</span>
+
+  </div>
+</div>
+
+<!-- Container (Contact Section) -->
+<div class="w3-content w3-container w3-padding-64" id="organizers">
+    <h3 class="w3-center">Scientific organization</h3>
+    <div class="container">
+        <div class="column">
+            <a href="https://www.sylvainlobry.com"><img src="images/SL.jpg" class="w3-circle w3-image" alt="logo" style="border:1px solid red; width: 100px;margin:10px;"></a>
+                <div class="label"><a href="https://www.sylvainlobry.com">Sylvain Lobry</a></div>
+        </div>
+        <div class="column">
+            <a href="https://www.lamsade.dauphine.fr/~litwin/soror/soror.htm"><img src="images/soror.jpg" class="w3-circle w3-image" alt="logo" style="border:1px solid red; height: 100px; width: 100px;margin:10px;"></a>
+                <div class="label"><a href="https://www.lamsade.dauphine.fr/~litwin/soror/soror.htm">Soror Sahri</a></div>
+        </div>
+        <div class="column">
+            <a href="https://helios2.mi.parisdescartes.fr/~themisp/"><img src="images/themis.jpg" class="w3-circle w3-image" alt="logo" style="border:1px solid red; width: 100px;margin:10px;"></a>
+                <div class="label"><a href="https://helios2.mi.parisdescartes.fr/~themisp/">Themis Palpanas</a></div>
+        </div>
+    </div>
+    <h3 class="w3-center">Institutes</h3>
+    <div class="container">
+        <div class="column">
+            <a href="https://www.u-paris.fr/"><img src="images/UPC.jpg" class="w3-image" alt="logo" style="width: 200px;padding:23px 0; "></a>
+        </div>
+        <div class="column">
+            <a href="https://math-info.u-paris.fr"><img src="images/MathInfo.jpg" class="w3-image" alt="logo" style="width: 320px;padding:0px 0;"></a>
+        </div>
+        <div class="column">
+            <a href="http://lipade.mi.parisdescartes.fr/"><img src="images/LIPADE.png" class="w3-image" alt="logo" style="width: 200px;padding:45px 0;"></a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+ 
+<script>
+
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function toggleFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+</body>
+</html>
